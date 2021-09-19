@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 816539746136899523}
   - component: {fileID: 816539746136899522}
   - component: {fileID: 7439858341775170597}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MotorCell
   m_TagString: Cell
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ PointEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 64
   m_ForceMagnitude: -20
   m_ForceVariation: 0
   m_DistanceScale: 1
@@ -177,6 +177,7 @@ MonoBehaviour:
   axons: []
   currentSignal:
     magnitude: 0
+  HP: 10
   proceessDeley: 1
   fadeDeley: 1
 --- !u!1 &2192684654042830828
@@ -188,7 +189,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7713973042036351287}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Axons
   m_TagString: Untagged
   m_Icon: {fileID: 0}

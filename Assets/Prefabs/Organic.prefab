@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4710482421350314471}
   - component: {fileID: 2523560587001181378}
   - component: {fileID: -37608310876943828}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Organic
   m_TagString: Organic
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.5
+  m_Mass: 100
   m_LinearDrag: 2
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -134,3 +134,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e59b97fcf003f6459128973ce86f384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sustenance: 0

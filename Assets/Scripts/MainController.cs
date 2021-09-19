@@ -37,29 +37,29 @@ public class MainController : MonoBehaviour
                     new Quaternion());
                 switch (el.type)
                 {
-                    case "SimpleCell":
+                    case objectTypes.SimpleCell:
                         {
                             cell.transform.parent = GameObject.Find("SimpleCells").transform;
                             cell.GetComponent<ObjectBehaviourScript>()
-                                .dna = GetBasicDna();
+                                .dna = GetBasicDna(objectTypes.SimpleCell);
                             break;
                         }
-                    case "MotorCell":
+                    case objectTypes.MotorCell:
                         {
                             cell.transform.parent = GameObject.Find("MotorCells").transform;
                             cell.GetComponent<ObjectBehaviourScript>()
-                                .dna = GetBasicDna();
+                                .dna = GetBasicDna(objectTypes.MotorCell);
                             break;
                         }
-                    case "SensorCell":
+                    case objectTypes.SensorCell:
                         {
                             cell.transform.parent = GameObject.Find("SensorCells").transform;
                             cell.GetComponent<ObjectBehaviourScript>()
-                                .dna = GetBasicDna();
+                                .dna = GetBasicDna(objectTypes.SensorCell);
 
                             break;
                         }
-                    case "Organic":
+                    case objectTypes.Organic:
                         {
                             cell.transform.parent = GameObject.Find("Elements").transform;
                             break;
@@ -74,10 +74,10 @@ public class MainController : MonoBehaviour
     }
 
 
-    public List<Gen> GetBasicDna()
+    public List<Gen> GetBasicDna(objectTypes type)
     {
         return new List<Gen>() {
-                new Gen(Gens.Тип, el.type),
+                new Gen(Gens.Тип, type),
                 new Gen(Gens.Вероятность_создания_аксона, 0.3f),
                 new Gen(Gens.Коэфициент_затухания_передаваемого_сигнала, 0.8f),
                 new Gen(Gens.Минимальная_магнитуда_сигнала_для_получения, 0.0001f),
@@ -86,9 +86,17 @@ public class MainController : MonoBehaviour
                 new Gen(Gens.Размерность_инвентаря, 5)}; 
     }
 
-    public void PushToPull(GameObject obj)
+    public void GetOutOfPool(string gameObjectName, Transform parent)
     {
-        obj.transform.parent = 
+        var obj = GameObject.Find("Pool").transform.Find(gameObjectName);
+        obj.transform.parent = parent;
+        obj.gameObject.SetActive(true);
+    }
+
+    public void PushToPool(GameObject obj)
+    {
+        obj.transform.parent = GameObject.Find("Pool").transform;
+        obj.SetActive(false);
     }
 }
 
@@ -97,5 +105,13 @@ public struct Elemental //start init
 {
     public GameObject obj;
     public int count;
-    public string type;
+    public objectTypes type;
+}
+
+public enum objectTypes
+{
+    SimpleCell,
+    MotorCell,
+    SensorCell,
+    Organic
 }
