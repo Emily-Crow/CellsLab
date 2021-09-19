@@ -55,7 +55,7 @@ public class MainController : MonoBehaviour
                         {
                             cell.transform.parent = GameObject.Find("SensorCells").transform;
                             cell.GetComponent<ObjectBehaviourScript>()
-                                .dna = new List<Gen>();
+                                .dna = GetBasicDna();
 
                             break;
                         }
@@ -74,7 +74,7 @@ public class MainController : MonoBehaviour
     }
 
 
-    private List<Gen> GetBasicDna()
+    public List<Gen> GetBasicDna()
     {
         return new List<Gen>() {
                 new Gen(Gens.Тип, el.type),
@@ -84,6 +84,11 @@ public class MainController : MonoBehaviour
                 new Gen(Gens.Коэфициент_затухания_внутреннего_сигнала, 0.9f),
                 new Gen(Gens.Радиус_притяжения, Mathf.Clamp((float) r.NextDouble() * (float) r.NextDouble(), 0.2f, 1)),
                 new Gen(Gens.Размерность_инвентаря, 5)}; 
+    }
+
+    public void PushToPull(GameObject obj)
+    {
+        obj.transform.parent = 
     }
 }
 
