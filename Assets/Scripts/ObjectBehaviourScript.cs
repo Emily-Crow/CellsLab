@@ -102,11 +102,17 @@ public class ObjectBehaviourScript : MonoBehaviour
         
     }
 
-    private void AddToInventory(GameObject food)
+    private void AddToInventory(GameObject obj)
     {
-        Food = Food + 1;
-        Destroy(food);
+        for (int i = 0; i < inventory.Length; i++)
+        {
+            if (inventory[i] != null)
+                continue;
+            inventory[i] = obj;
+            
+        }
     }
+
 
     private void SortingCells(GameObject cell)
     {

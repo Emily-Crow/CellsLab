@@ -4,5 +4,10 @@ using UnityEngine;
 
 public class cfgOrganic : MonoBehaviour
 {
-    public float Sustenance;
+    public float sustenance;
+
+    void Start()
+    {
+        sustenance = Random.value;
+    }
 }
