@@ -36,7 +36,6 @@ public class ObjectBehaviourScript : MonoBehaviour
     public float HP = 10;
 
     public object[] inventory;
-
     private MainController controller;
 
     public int proceessDeley = 1;
@@ -60,7 +59,7 @@ public class ObjectBehaviourScript : MonoBehaviour
 
     void FixedUpdate()
     {
-      
+
     }
 
     void Update()
@@ -77,10 +76,19 @@ public class ObjectBehaviourScript : MonoBehaviour
 
     private void ReproductElements()
     {
-        if (Food > 0) HP++; Food--;
-        if (Minerals > 0)
-            //Изменять что-то
-            ;
+        //if (Food > 0) HP++; Food--;
+        //if (Minerals > 0)
+        //    //Изменять что-то
+        //    ;
+        for(int i = 0; i< inventory.Length; i++)
+        {
+            var obj = (GameObject)inventory[i];
+            if (obj.transform.parent.name == "Organics")
+            {
+                HP += obj.GetComponent<cfgOrganic>().sustenance;
+                inventory[i] = null;
+            }
+        }
     }
 
     void LateUpdate()
@@ -94,11 +102,15 @@ public class ObjectBehaviourScript : MonoBehaviour
         var obj = collision.collider.gameObject;
         switch (obj.tag)
         {
-            case "Cell": SortingCells(obj); break;
+            case "Cell":
+                {
+                    SortingCells(obj); 
+                    RunSignal(new Signal() { value = "Collision", magnitude = 1 });
+                    //break;
+                }
             default: AddToInventory(obj); break;
         }
         
-        RunSignal(new Signal() { value = "Collision", magnitude = 1 });
         
     }
 
@@ -106,10 +118,12 @@ public class ObjectBehaviourScript : MonoBehaviour
     {
         for (int i = 0; i < inventory.Length; i++)
         {
-            if (inventory[i] != null)
-                continue;
-            inventory[i] = obj;
-            
+            if (inventory[i] == null)
+            {
+                inventory[i] = obj;
+                controller.PushToPool(obj);
+                break;
+            }
         }
     }
 
