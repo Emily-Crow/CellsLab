@@ -106,7 +106,7 @@ public class ObjectBehaviourScript : MonoBehaviour
                 {
                     SortingCells(obj); 
                     RunSignal(new Signal() { value = "Collision", magnitude = 1 });
-                    //break;
+                    break;
                 }
             default: AddToInventory(obj); break;
         }
@@ -116,6 +116,7 @@ public class ObjectBehaviourScript : MonoBehaviour
 
     private void AddToInventory(GameObject obj)
     {
+        foreach(var invs in inventory.First(inv => inv != null))
         for (int i = 0; i < inventory.Length; i++)
         {
             if (inventory[i] == null)

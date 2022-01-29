@@ -123,6 +123,36 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &178228892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 178228893}
+  m_Layer: 0
+  m_Name: Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &178228893
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178228892}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &270523091
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,13 +435,16 @@ MonoBehaviour:
   elemental:
   - obj: {fileID: 816539746136899527, guid: a0350a9c688b09049b0b827824ffbf49, type: 3}
     count: 10
-    type: SimpleCell
+    type: 0
   - obj: {fileID: 816539746136899527, guid: 4c95c6d92fd0279418bc615ab0ac456f, type: 3}
     count: 10
-    type: MotorCell
+    type: 1
   - obj: {fileID: 5134070077182076148, guid: 4fc121ac7e4996346a93e4cbac8a95d1, type: 3}
     count: 10
-    type: Organic
+    type: 3
+  - obj: {fileID: 816539746136899527, guid: dcf6b9d9fa88eb545ac1b80aa44ab701, type: 3}
+    count: 10
+    type: 2
   StartPoint: {fileID: 2006317793}
   EndPoint: {fileID: 1872453517}
   SubstractAxonWeightValue: 0.001
